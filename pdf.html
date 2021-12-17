@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PDF</title>
+		<style>
+      #viewer {
+        display: inline-block;
+        width: calc(100%);
+        height: calc(100vh - 20px);
+      }
+		</style>
+  </head>
+  <body>
+    <div id="viewer"></div>
+  </body>
+	<script src="./assets/pdfLib/webviewer.min.js"></script>
+	<script src="./assets/FileSaver.js"></script>
+	<script type="text/javascript">
+		WebViewer(
+			{
+				path: './assets/pdfLib',
+				initialDoc: 'https://pdftron.s3.amazonaws.com/downloads/pl/demo-annotated.pdf',
+				disableFlattenedAnnotations: true
+			},
+			document.getElementById('viewer')
+		).then(instance => {
+			console.log(instance);
+
+			const { documentViewer, annotationManager } = instance.Core;
+
+			documentViewer.addEventListener('documentLoaded', async () => {
+				// const xfdfData = await annotationManager.exportAnnotations({});
+				// const documentData = await documentViewer.getDocument().getFileData();
+
+			});
+
+			instance.setHeaderItems((header) => {
+				header.push({
+					type: 'actionButton',
+					img: 'https://cdn.pixabay.com/photo/2016/12/18/13/45/download-1915753_960_720.png',
+					onClick: async () => {
+						const fileData = await documentViewer.getDocument().getFileData({});
+						saveAs(new Blob([fileData]), 'myfile.pdf')
+					},
+				})
+			});
+
+		});
+	</script>
+</html>
