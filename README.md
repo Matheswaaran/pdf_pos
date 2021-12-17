@@ -9,3 +9,9 @@
 Used CDN in `pdf.js` for the following packages: 
 - Pdf js. express 
 - FileSaver.js
+
+
+## Steps to run the code:
+
+- Install [Live server in vscode](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+- Run `index.html` using the live server
