@@ -1,4 +1,4 @@
-# PDF js. Express POST
+# PDF js. Express POC
 
 ### Entry point is `index.html`
 
