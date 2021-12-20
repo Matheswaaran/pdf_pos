@@ -2,9 +2,34 @@
 <html lang="en">
   <head>
     <title>PDF viewer</title>
+		<script src="https://unpkg.com/alpinejs" defer></script>
+		<script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <iframe src="pdf.html"></iframe>
+		<div x-data="{ open: false }">
+			<div class="w-screen h-screen flex flex-col items-center justify-center">
+				<button
+						@click="open = true"
+						type="button"
+						class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+				>
+					View PDF
+				</button>
+			</div>
+			<div x-show="open" class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+				<div class="flex items-end justify-center min-h-screen text-center sm:block sm:p-0">
+					<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+					<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+					<div class="inline-block align-bottom bg-transparent rounded-lg text-left overflow-hidden shadow-xl transform transition-all">
+						<div class="flex items-center justify-end">
+							<span @click="open = false" class="text-white bg-red-500 px-4 rounded-full">X</span>
+						</div>
+						<iframe src="pdf.html"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
   </body>
 	<style>
 		iframe {
