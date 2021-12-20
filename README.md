@@ -6,9 +6,13 @@
 
 ### PDF viewer is used in `pdf.html`
 
-Used CDN in `pdf.js` for the following packages: 
+Used CDN in `pdf.html` for the following packages: 
 - Pdf js. express 
 - FileSaver.js
+
+Used CDN in `index.html` for the following packages:
+- [AlpineJs](https://alpinejs.dev)
+- [Tailwind CSS](https://tailwindcss.com)
 
 
 ## Steps to run the code:
